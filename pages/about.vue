@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <h1>關於</h1>
+    <p>此網站透過Nuxt3+Vue3讀取外部新聞API製作而成。</p>
+    <p>利用app.vue渲染整個頁面，包含header跟footer，</p>
+    <p>在透過page資料夾下的index.vue用useAsyncData()抓取到API資料後，</p>
+    <P>將資料用v-for的方法送到components資料夾中的New.vue將新聞製作出來。</P>
+  </div>
+</template>
