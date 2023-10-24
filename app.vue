@@ -1,3 +1,13 @@
+<script>
+export default {
+  data() {
+    return {
+      wenYTWebSiteLink: "https://wenyt-profileweb.netlify.app/",
+    };
+  },
+};
+</script>
+
 <template>
   <div id="app">
     <div class="header">
@@ -9,6 +19,7 @@
         <a href="/">首頁</a>
         <a href="/search">搜尋新聞</a>
         <a href="/about">關於此網站</a>
+        <a :href="wenYTWebSiteLink">WenYT個人網站</a>
       </div>
     </div>
     <div class="mainInfo"><NuxtPage /></div>
