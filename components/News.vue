@@ -22,7 +22,7 @@ export default {
   </div>
 </template>
 
-<style>
+<style scoped>
 .new {
   background-color: aquamarine;
   display: flex;
@@ -33,6 +33,9 @@ export default {
   border-bottom-right-radius: 10px;
   width: 400px;
   .picContainer {
+    height: 200px;
+    height: 200px;
+
     .newPic {
       width: 100%; /* 图片宽度占满容器宽度 */
       height: auto; /* 高度自适应，以保持图片比例 */
