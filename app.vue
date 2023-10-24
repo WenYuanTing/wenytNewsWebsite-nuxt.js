@@ -2,8 +2,14 @@
 export default {
   data() {
     return {
+      showNews: false,
       wenYTWebSiteLink: "https://wenyt-profileweb.netlify.app/",
     };
+  },
+  methods: {
+    handleClick() {
+      this.showNews = !this.showNews;
+    },
   },
 };
 </script>
@@ -19,10 +25,18 @@ export default {
         <a href="/">首頁</a>
         <a href="/search">搜尋新聞</a>
         <a href="/about">關於此網站</a>
-        <a :href="wenYTWebSiteLink">WenYT個人網站</a>
+        <a target="_blank" :href="wenYTWebSiteLink">WenYT個人網站</a>
       </div>
     </div>
-    <div class="mainInfo"><NuxtPage /></div>
+    <div class="mainInfo" v-show="showNews">
+      <NuxtPage />
+    </div>
+    <div
+      class="buttonContainer"
+      :style="{ 'min-height': showNews ? '20vh' : '78vh' }"
+    >
+      <button @click="handleClick">{{ showNews ? "隱藏" : "顯示" }}內容</button>
+    </div>
 
     <div class="footer">YuanTing-Wen 2023©</div>
   </div>
@@ -63,5 +77,17 @@ export default {
   align-items: center;
   font-size: 1.25rem;
   min-height: 10vh;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  min-height: 78vh;
+}
+button {
+  max-height: 50px;
+  background-color: aquamarine;
+  font-size: 24px;
+  margin: 2rem;
 }
 </style>
