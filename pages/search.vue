@@ -17,8 +17,9 @@ export default {
           console.log(this.searchTerm);
           const { data } = await useAsyncData("mountains", () =>
             $fetch(
-              `https://newsapi.org/v2/everything?q=${this.searchTerm}&page=1&pageSize=15&apiKey=dae872a7c5524b53821837ded0eb1608`
+              `https://newsapi.org/v2/everything?q=${this.searchTerm}&page=1&pageSize=15&apiKey=d73e4c2b476b4b1b86c7854645d7f4f6`
               //d73e4c2b476b4b1b86c7854645d7f4f6
+              //dae872a7c5524b53821837ded0eb1608
             )
           );
           if (

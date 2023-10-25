@@ -5,8 +5,18 @@ export default {
       wenYTWebSiteLink: "https://wenyt-profileweb.netlify.app/",
     };
   },
-  methods: {},
-  computed: {},
+  beforeCreate() {
+    console.log("創建之前");
+  },
+  created() {
+    console.log("創建之後");
+  },
+  beforeMount() {
+    window.alert("渲染前");
+  },
+  mounted() {
+    window.alert("渲染後");
+  },
 };
 </script>
 
