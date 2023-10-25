@@ -62,9 +62,11 @@ export default {
         <h1>WenYT2023-新聞網-Nuxt3</h1>
       </div>
       <div class="rightSide">
-        <a href="/">首頁</a>
-        <a href="/search">搜尋新聞</a>
-        <a href="/about">關於此網站</a>
+        <nuxt-link to="/">首頁</nuxt-link>
+        <nuxt-link to="/search">搜尋新聞</nuxt-link>
+        <nuxt-link to="/about">關於此網站</nuxt-link>
+        <!-- <a href="/search">搜尋新聞</a>
+        <a href="/about">關於此網站</a> -->
         <a target="_blank" :href="wenYTWebSiteLink">WenYT個人網站</a>
       </div>
     </div>
