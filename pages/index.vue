@@ -10,6 +10,7 @@ export default {
       countDown: 5,
       pulsOrMinusNumber: 0,
       timer: null,
+      totalTime: 0,
     };
   },
   created() {
@@ -23,13 +24,18 @@ export default {
         )
       );
       this.newsData = data._rawValue.articles;
-      console.log(newsData);
     },
     handleClick() {
       this.showNews = !this.showNews;
       this.showNews2Disable = !this.showNews2Disable;
     },
     handleClick2() {
+      if (this.showNews2) {
+        // 如果showNews2为true，取消计时器并重置相关状态
+        clearInterval(this.timer);
+        this.timer = null;
+        this.countDown = 5;
+      }
       this.showNews2 = !this.showNews2;
       this.showNewsDisable = !this.showNewsDisable;
     },
@@ -40,6 +46,7 @@ export default {
       this.pulsOrMinusNumber++;
     },
   },
+
   computed: {
     label() {
       return this.showNews ? "隱藏" : "顯示";
@@ -60,6 +67,7 @@ export default {
         }
         this.timer = setInterval(() => {
           this.countDown--;
+          console.log("countDown= " + this.countDown);
           if (this.countDown == 0) {
             this.showNews2 = false;
             clearInterval(this.timer);
