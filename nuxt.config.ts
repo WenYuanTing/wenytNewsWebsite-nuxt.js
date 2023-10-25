@@ -1,23 +1,22 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default {
-  mode: "spa",
-  build: {
-    target: "static",
-  },
-  router: {
-    mode: "history", // 或 'hash'
-  },
+  // 配置页面
   pages: {
+    // 根页面（首页）
     index: {
-      entry: "pages/index",
-      title: "Home Page",
+      entry: "pages/index", // 页面入口文件
+      title: "Home Page", // 页面标题
     },
+    // 其他页面
     about: {
       entry: "pages/about",
       title: "About Page",
     },
-    search: {
-      entry: "src/pages/search",
-      title: "Search Page",
+    contact: {
+      entry: "src/pages/contact",
+      title: "Contact Page",
     },
   },
+
+  // 配置路由
 };
