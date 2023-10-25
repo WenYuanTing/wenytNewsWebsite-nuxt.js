@@ -41,7 +41,6 @@ export default {
         }
         this.timer = setInterval(() => {
           this.countDown--;
-          console.log("countDown : " + this.countDown);
           if (this.countDown == 0) {
             this.showNews2 = false;
             clearInterval(this.timer);
@@ -98,12 +97,10 @@ export default {
   .leftSide {
     display: flex;
   }
-  .rightSide {
-    a {
-      font-size: 1.5rem;
-      text-decoration: none;
-      padding-right: 2rem;
-    }
+  .rightSide a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding-right: 2rem;
   }
   .logo {
     max-height: 8vh;
