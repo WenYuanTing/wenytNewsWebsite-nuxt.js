@@ -1,25 +1,43 @@
 <script>
+import { debounce } from "lodash";
 export default {
   data() {
     return {
       searchTerm: "",
       searchNewsData: [],
+      searchCounter: 0, // 添加搜索请求计数器
     };
+  },
+  created() {
+    this.debouncedHandleInput = debounce(this.handleInput, 250);
   },
   methods: {
     async handleInput() {
+      const currentSearchCounter = ++this.searchCounter;
+
       try {
         if (this.searchTerm != "") {
+          console.log(this.searchTerm);
           const { data } = await useAsyncData("mountains", () =>
             $fetch(
-              `https://newsapi.org/v2/everything?q=${this.searchTerm}&page=1&pageSize=15&apiKey=d73e4c2b476b4b1b86c7854645d7f4f6`
+              `https://newsapi.org/v2/everything?q=${this.searchTerm}&page=1&pageSize=15&apiKey=dae872a7c5524b53821837ded0eb1608`
+              //d73e4c2b476b4b1b86c7854645d7f4f6
             )
           );
-          this.searchNewsData = data._rawValue.articles;
-          console.log(this.searchNewsData);
+          if (
+            data._rawValue.articles != null &&
+            data._rawValue.articles != undefined &&
+            this.searchCounter === currentSearchCounter
+          ) {
+            this.searchNewsData = data._rawValue.articles;
+            console.log("搜尋結果 : " + this.searchNewsData[0].title);
+          } else if (data._rawValue == null || data._rawValue == undefined) {
+            console.log("查無資料");
+          }
         } else if (this.searchTerm == "") {
           setTimeout(() => {
             this.searchNewsData = [];
+            console.log("空白搜尋");
           }, 500);
         }
       } catch (error) {
@@ -38,7 +56,7 @@ export default {
       placeholder="請輸入要查找的關鍵字"
       class="search"
       v-model="searchTerm"
-      @input="handleInput"
+      @input="debouncedHandleInput"
     />
     <ul>
       <li>

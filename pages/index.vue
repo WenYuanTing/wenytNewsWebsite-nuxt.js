@@ -8,6 +8,7 @@ export default {
       showNews2: false,
       showNews2Disable: false,
       countDown: 5,
+      pulsOrMinusNumber: 0,
       timer: null,
     };
   },
@@ -18,7 +19,7 @@ export default {
     async findNewsData() {
       const { data } = await useAsyncData("mountains", () =>
         $fetch(
-          "https://newsapi.org/v2/top-headlines?country=us&page=1&pageSize=15&apiKey=d73e4c2b476b4b1b86c7854645d7f4f6"
+          "https://newsapi.org/v2/top-headlines?country=us&page=1&pageSize=15&apiKey=dae872a7c5524b53821837ded0eb1608"
         )
       );
       this.newsData = data._rawValue.articles;
@@ -32,6 +33,12 @@ export default {
       this.showNews2 = !this.showNews2;
       this.showNewsDisable = !this.showNewsDisable;
     },
+    minus() {
+      this.pulsOrMinusNumber--;
+    },
+    plus() {
+      this.pulsOrMinusNumber++;
+    },
   },
   computed: {
     label() {
@@ -40,13 +47,13 @@ export default {
     label2() {
       return this.showNews2
         ? "再" + this.countDown + "秒後隱藏新聞"
-        : "顯示五秒新聞";
+        : "顯示" + (this.countDown + this.pulsOrMinusNumber) + "秒新聞";
     },
   },
   watch: {
     showNews2(newVal, oldVal) {
       if (newVal) {
-        this.countDown = 5;
+        this.countDown = this.countDown + this.pulsOrMinusNumber;
         if (this.timer) {
           clearInterval(this.timer);
           this.timer = null;
@@ -58,6 +65,7 @@ export default {
             clearInterval(this.timer);
             this.timer = null;
             this.showNewsDisable = false;
+            this.countDown = 5;
           }
         }, 1000);
       }
@@ -77,9 +85,11 @@ export default {
     <button @click="handleClick" :disabled="showNewsDisable">
       {{ label }}新聞
     </button>
+    <button @click="minus">-</button>
     <button @click="handleClick2" :disabled="showNews2Disable">
       {{ label2 }}
     </button>
+    <button @click="plus">+</button>
   </div>
 </template>
 

@@ -27,28 +27,29 @@ export default {
   padding: 0rem 1rem;
   margin-bottom: 1rem;
   margin-right: 2rem;
-  .Container {
-    display: flex;
-    align-items: center;
-    .newsPic {
-      max-width: 200px; /* 最大宽度不超过容器宽度 */
-      max-height: auto; /* 最大高度不超过容器高度 */
-    }
-  }
+}
+.Container {
+  display: flex;
+  align-items: center;
+}
 
-  .newsPic {
-    padding: 1rem;
-  }
-  h2 {
-    color: rgba(44, 149, 224, 0.995);
-  }
-  a {
-    font-size: 20px;
-    align-self: flex-end;
-    text-decoration: none;
-    padding-right: 2rem;
-    padding-bottom: 0.5rem;
-    color: rgb(3, 30, 211);
-  }
+.Container .newsPic {
+  padding: 1rem;
+  max-width: 200px; /* 最大宽度不超过容器宽度 */
+  max-height: auto; /* 最大高度不超过容器高度 */
+}
+h2 {
+  color: rgba(44, 149, 224, 0.995);
+}
+a {
+  font-size: 20px;
+  align-self: flex-end;
+  text-decoration: none;
+  padding-right: 2rem;
+  padding-bottom: 0.5rem;
+  color: rgb(3, 30, 211);
+}
+p {
+  font-size: 20px;
 }
 </style>
