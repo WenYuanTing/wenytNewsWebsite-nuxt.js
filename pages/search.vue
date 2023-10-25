@@ -5,7 +5,6 @@ export default {
     return {
       searchTerm: "",
       searchNewsData: [],
-      searchCounter: 0, // 添加搜索请求计数器
     };
   },
   created() {
@@ -13,8 +12,6 @@ export default {
   },
   methods: {
     async handleInput() {
-      const currentSearchCounter = ++this.searchCounter;
-
       try {
         if (this.searchTerm != "") {
           console.log(this.searchTerm);
@@ -26,8 +23,7 @@ export default {
           );
           if (
             data._rawValue.articles != null &&
-            data._rawValue.articles != undefined &&
-            this.searchCounter === currentSearchCounter
+            data._rawValue.articles != undefined
           ) {
             this.searchNewsData = data._rawValue.articles;
             console.log("搜尋結果 : " + this.searchNewsData[0].title);
